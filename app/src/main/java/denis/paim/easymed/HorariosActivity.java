@@ -1,17 +1,14 @@
 package denis.paim.easymed;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -31,8 +28,12 @@ public class HorariosActivity extends AppCompatActivity {
     List<String> horarios;
     TextView nomeMedico;
     TextView especialidadeMedico;
+    TextView txtMarcarConsulta;
 
-//    FragmentManager fragmentManager;
+    Calendar dataAtual;
+
+    Consulta consulta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,18 +64,12 @@ public class HorariosActivity extends AppCompatActivity {
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
+
+                dataAtual = date;
                 // on below line we are printing date
                 // in the logcat which is selected.
                 // Log.e("TAG", "CURRENT DATE IS " + date);
                 // Toast.makeText(getApplicationContext(), "Data: " + date + "Position: " + position + " ", Toast.LENGTH_SHORT).show();
-
-
-
-//                fragmentManager = getSupportFragmentManager();
-//                FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                transaction.add(R.id.frameLayoutHorario, new FragmentHorarios()).commit();
-
-
 
             }
         });
@@ -104,28 +99,35 @@ public class HorariosActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spHorarios.setAdapter(arrayAdapter);
 
-//        List<Horario> horarioList = new ArrayList<>();
-//        horarioList.add(new Horario( "8:00"));
-//        horarioList.add(new Horario( "8:30"));
-//        horarioList.add(new Horario( "9:00"));
-//        horarioList.add(new Horario( "9:30"));
-//        horarioList.add(new Horario( "10:00"));
-//        horarioList.add(new Horario( "10:30"));
-//        horarioList.add(new Horario( "11:00"));
-//        horarioList.add(new Horario( "11:30"));
-//
-//        iniciarRecyclerViewHorario(horarioList);
+
+        txtMarcarConsulta = findViewById(R.id.txtConfirmarConsulta);
+        txtMarcarConsulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                confirmarConsulta();
+
+                Intent intent = new Intent(getApplicationContext(), ConsultasMarcadasActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
 
-//    private void iniciarRecyclerViewHorario(List<Horario> horarioList) {
-//
-//        recyclerView = view.findViewById(R.id.recycler_view_horarios_list);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-//        recyclerView.setLayoutManager(layoutManager);
-//        horarioAdapter = new HorarioAdapter(this, horarioList);
-//        recyclerView.setAdapter(horarioAdapter);
-//
-//    }
+    public void confirmarConsulta(){
+
+        Bundle extras = getIntent().getExtras();
+
+        consulta = new Consulta();
+        consulta.setMedicoNome(extras.getString("nomeMedico"));
+        consulta.setEspecialidade(extras.getString("especialidadeMedico"));
+        ConsultaDAO.marcarConsulta(this, consulta);
+
+
+        Toast.makeText(this, "Consulta marcada com sucesso!", Toast.LENGTH_LONG ).show();
+    }
+
+
 }

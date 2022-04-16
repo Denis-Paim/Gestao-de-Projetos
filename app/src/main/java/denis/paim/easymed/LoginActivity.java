@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView txtCadastrar;
@@ -63,7 +65,8 @@ public class LoginActivity extends AppCompatActivity {
         boolean resultado = usuarioDAO.autenticarUsuario(this, usuario);
 
         if (resultado == true){
-            Intent intent = new Intent(LoginActivity.this, EspecialidadesActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ConsultasMarcadasActivity.class);
+            intent.putExtra("nomeUsuario", usuario.nome);
             startActivity(intent);
             finish();
         }else{
