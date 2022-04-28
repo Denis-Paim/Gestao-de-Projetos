@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
 
         usuarioNome = findViewById(R.id.edNome);
         usuarioSenha =  findViewById(R.id.edSenha);
@@ -66,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (resultado == true){
             Intent intent = new Intent(LoginActivity.this, ConsultasMarcadasActivity.class);
+            intent.putExtra("acao", "nome");
             intent.putExtra("nomeUsuario", usuario.nome);
             startActivity(intent);
             finish();

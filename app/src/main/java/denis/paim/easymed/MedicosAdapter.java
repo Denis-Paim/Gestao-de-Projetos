@@ -43,6 +43,7 @@ public class MedicosAdapter extends RecyclerView.Adapter<MedicosAdapter.MedicosV
 
         holder.nome.setText(medicoList.get(position).getNome());
         holder.especialidade.setText(medicoList.get(position).getEspecialidade());
+        holder.sala.setText(medicoList.get(position).getSala());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +52,7 @@ public class MedicosAdapter extends RecyclerView.Adapter<MedicosAdapter.MedicosV
                 Intent intent = new Intent(context, HorariosActivity.class);
                 intent.putExtra("nomeMedico", medicoList.get(holder.getAdapterPosition()).getNome());
                 intent.putExtra("especialidadeMedico", medicoList.get(holder.getAdapterPosition()).getEspecialidade());
+                intent.putExtra("salaConsulta", medicoList.get(holder.getAdapterPosition()).getSala());
 
                 context.startActivity(intent);
 
@@ -70,6 +72,7 @@ public class MedicosAdapter extends RecyclerView.Adapter<MedicosAdapter.MedicosV
 
         TextView nome;
         TextView especialidade;
+        TextView sala;
         CardView cardView;
 
         public MedicosViewHolder(@NonNull View itemView) {
@@ -77,6 +80,7 @@ public class MedicosAdapter extends RecyclerView.Adapter<MedicosAdapter.MedicosV
 
             nome = itemView.findViewById(R.id.txtNomeMedico);
             especialidade = itemView.findViewById(R.id.txtEspecialidadeMedico);
+            sala = itemView.findViewById(R.id.txtSala);
             cardView = itemView.findViewById(R.id.cardView);
 
         }

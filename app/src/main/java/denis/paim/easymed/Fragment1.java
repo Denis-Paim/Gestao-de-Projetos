@@ -27,10 +27,10 @@ public class Fragment1 extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_1, container, false);
         List<Medico> medicoList = new ArrayList<>();
-        medicoList.add(new Medico( "Dr. ##############", "Pediatria"));
-        medicoList.add(new Medico( "Dr. ##############", "Pediatria"));
-        medicoList.add(new Medico( "Dr. ##############", "Pediatria"));
-        medicoList.add(new Medico( "Dr. ##############", "Pediatria"));
+        medicoList.add(new Medico( "Dr. ##############", "Pediatria", "Sala: Consultar no local"));
+        medicoList.add(new Medico( "Dr. ##############", "Pediatria", "Sala: Consultar no local"));
+        medicoList.add(new Medico( "Dr. ##############", "Pediatria", "Sala: Consultar no local"));
+        medicoList.add(new Medico( "Dr. ##############", "Pediatria", "Sala: Consultar no local"));
 
         iniciarRecyclerView(medicoList);
 

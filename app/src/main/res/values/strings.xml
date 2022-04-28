@@ -3,6 +3,9 @@
 
     <string name="txtVersao">Versão 1.0</string>
 
+    <string name="select">Especialidades</string>
+    <string name="horarios">Horários</string>
+
     <string-array name="especialidades">
         <item>Selecione especialidade...</item>
         <item>Pediatra</item>

@@ -10,12 +10,11 @@
         android:id="@+id/txtNomeUsuarioConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="49dp"
+        android:layout_marginTop="72dp"
         android:text="Nome"
-        app:layout_constraintEnd_toEndOf="@+id/txtEspecialidadeConsulta"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,21 +22,22 @@
         android:id="@+id/txtNomeMedicoConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="1dp"
         android:text="Medico"
-        app:layout_constraintEnd_toEndOf="@+id/txtHorarioConsulta"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtDataConsulta"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeUsuarioConsulta" />
 
     <TextView
         android:id="@+id/txtEspecialidadeConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+
         android:text="Especialidade"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeMedicoConsulta" />
 
@@ -45,12 +45,11 @@
         android:id="@+id/txtDataConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+
         android:text="Data"
-        app:layout_constraintEnd_toEndOf="@+id/txtEspecialidadeConsulta"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEspecialidadeConsulta" />
 
@@ -58,34 +57,38 @@
         android:id="@+id/txtHorarioConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="48dp"
         android:text="Horario"
-        app:layout_constraintStart_toStartOf="@+id/txtDataConsulta"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDataConsulta" />
 
     <TextView
         android:id="@+id/txtSalaConsulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+
         android:text="Sala"
-        app:layout_constraintEnd_toEndOf="@+id/txtDataConsulta"
-        app:layout_constraintStart_toStartOf="@+id/txtHorarioConsulta"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHorarioConsulta" />
 
     <TextView
         android:id="@+id/txtMarcarConsulta"
-        android:layout_width="187dp"
-        android:layout_height="42dp"
-        android:text="Marcar Consulta"
+        android:layout_width="287dp"
+        android:layout_height="50dp"
         android:background="@drawable/button"
-        android:textColor="@color/white"
         android:gravity="center"
+        android:text="Agendar Consulta"
+        android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_marginBottom="73dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.801" />
 </androidx.constraintlayout.widget.ConstraintLayout>

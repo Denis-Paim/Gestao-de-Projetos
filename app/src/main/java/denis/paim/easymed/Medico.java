@@ -2,14 +2,16 @@ package denis.paim.easymed;
 
 public class Medico {
 
-    String nome, especialidade;
+    String nome, especialidade, sala;
 
     public Medico() {
     }
 
-    public Medico(String nome, String especialidade) {
+
+    public Medico(String nome, String especialidade, String sala) {
         this.nome = nome;
         this.especialidade = especialidade;
+        this.sala = sala;
     }
 
     public String getNome() {
@@ -26,5 +28,13 @@ public class Medico {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public String getSala() {
+        return sala;
+    }
+
+    public void setSala(String sala) {
+        this.sala = sala;
     }
 }

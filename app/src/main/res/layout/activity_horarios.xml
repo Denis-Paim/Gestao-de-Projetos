@@ -20,6 +20,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Nome Médico"
+        android:textSize="20dp"
+        android:textColor="@color/black"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,21 +33,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="76dp"
         android:text="Especialidade"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <devs.mulham.horizontalcalendar.HorizontalCalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:selectorColor="@android:color/holo_red_dark"
-        app:textColorNormal="@color/purple_200"
-        app:textColorSelected="@color/purple_200" />
 
     <!--    <FrameLayout-->
     <!--        android:id="@+id/frameLayoutHorario"-->
@@ -65,31 +56,65 @@
 
     <!--    </FrameLayout>-->
 
-    <Spinner
-        android:id="@+id/spHorarios"
-        android:layout_width="365dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="292dp"
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectorColor="@color/black"
+        app:textColorNormal="#082BED"
+        app:textColorSelected="#082BED" />
+
+<!--    <Spinner-->
+<!--        android:id="@+id/spHorarios"-->
+<!--        android:layout_width="365dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:layout_marginTop="320dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/horarios"
+        app:layout_constraintBottom_toTopOf="@+id/txtConfirmarConsulta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintVertical_bias="0.19">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="273dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtConfirmarConsulta"
-        android:layout_width="187dp"
-        android:layout_height="42dp"
+        android:layout_width="287dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="208dp"
         android:background="@drawable/button"
+        android:gravity="center"
         android:text="Confirmar Consulta"
         android:textColor="@color/white"
-        android:gravity="center"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spHorarios"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintVertical_bias="1.0" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

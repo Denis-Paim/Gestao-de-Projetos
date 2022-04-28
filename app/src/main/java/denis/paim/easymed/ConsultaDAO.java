@@ -23,6 +23,21 @@ public class ConsultaDAO {
 
     }
 
+    public static void editar(Context context, Consulta consulta){
+        ContentValues values = new ContentValues();
+        values.put("usuario_nome", consulta.getUsuarioNome());
+        values.put("medico_nome", consulta.getMedicoNome());
+        values.put("especialidade", consulta.getEspecialidade());
+        values.put("data", consulta.getData());
+        values.put("horario", consulta.getHorario());
+        values.put("sala", consulta.getSala());
+
+        Banco conn = new Banco(context);
+        SQLiteDatabase db = conn.getWritableDatabase();
+
+        db.update("consultas", values, " usuario_nome = " + consulta.getUsuarioNome(), null);
+    }
+
     public static Consulta buscarConsultaByNome(Context context, String usuarioNome){
 
         Banco conn = new Banco(context);
