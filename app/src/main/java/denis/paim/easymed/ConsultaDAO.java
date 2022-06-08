@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConsultaDAO {
 
     public static void marcarConsulta(Context context, Consulta consulta) {
@@ -36,31 +39,94 @@ public class ConsultaDAO {
         SQLiteDatabase db = conn.getWritableDatabase();
 
         db.update("consultas", values, " usuario_nome = " + consulta.getUsuarioNome(), null);
+
     }
 
-    public static Consulta buscarConsultaByNome(Context context, String usuarioNome){
+
+
+    public static List<Consulta> retornarTodos(Context context){
 
         Banco conn = new Banco(context);
+        String sql_busca_todos = "SELECT * FROM consultas";
         SQLiteDatabase db = conn.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM consultas WHERE usuario_nome =  " + usuarioNome, null);
+        List<Consulta> consultaList = new ArrayList<>();
 
-        if( cursor.getCount() > 0 ){
-            cursor.moveToFirst();
+        Cursor c = db.rawQuery(sql_busca_todos, null);
+        while(c.moveToNext()){
+            Consulta consulta = new Consulta();
+            consulta.setId(c.getInt(c.getColumnIndex("id")));
+            consulta.setUsuarioNome(c.getString(c.getColumnIndex("usuario_nome")));
+            consulta.setMedicoNome(c.getString(c.getColumnIndex("medico_nome")));
+            consulta.setEspecialidade(c.getString(c.getColumnIndex("especialidade")));
+            consulta.setData(c.getString(c.getColumnIndex("data")));
+            consulta.setHorario(c.getString(c.getColumnIndex("horario")));
+            consulta.setSala(c.getString(c.getColumnIndex("sala")));
+            consultaList.add(consulta);
+
+        }
+        c.close();
+        return consultaList;
+    }
+
+
+    public static Consulta buscaPessoa(Context context, String nome) {
+
+        Banco conn = new Banco(context);
+        String sql_busca_pessoa = "SELECT * FROM consultas WHERE usuario_nome = " + "'" + nome + "'";
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Cursor c = db.rawQuery(sql_busca_pessoa, null);
+
+        Consulta consulta = new Consulta();
+
+        while(c.moveToNext()){
+
+                consulta.setUsuarioNome(c.getString(c.getColumnIndex("usuario_nome")));
+                consulta.setMedicoNome(c.getString(c.getColumnIndex("medico_nome")));
+                consulta.setEspecialidade(c.getString(c.getColumnIndex("especialidade")));
+                consulta.setData(c.getString(c.getColumnIndex("data")));
+                consulta.setHorario(c.getString(c.getColumnIndex("horario")));
+                consulta.setSala(c.getString(c.getColumnIndex("sala")));
+
+        }
+//        db.close();
+//        c.close();
+
+        return consulta;
+
+    }
+
+
+    public static List<Consulta> buscaPessoaList(Context context, String nome) {
+
+        Banco conn = new Banco(context);
+        String sql_busca_pessoa = "SELECT * FROM consultas WHERE usuario_nome = " + "'" + nome + "'";
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Cursor c = db.rawQuery(sql_busca_pessoa, null);
+
+        List<Consulta> consultaList = new ArrayList<>();
+
+        while(c.moveToNext()){
 
             Consulta consulta = new Consulta();
-            consulta.setId(  cursor.getInt( 0 ) );
-            consulta.setUsuarioNome( cursor.getString( 1 ));
-            consulta.setMedicoNome( cursor.getString( 2 ));
-            consulta.setEspecialidade( cursor.getString( 3 ));
-            consulta.setData( cursor.getString( 4 ));
-            consulta.setSala( cursor.getString( 5 ));
+            consulta.setId(c.getInt(c.getColumnIndex("id")));
+            consulta.setUsuarioNome(c.getString(c.getColumnIndex("usuario_nome")));
+            consulta.setMedicoNome(c.getString(c.getColumnIndex("medico_nome")));
+            consulta.setEspecialidade(c.getString(c.getColumnIndex("especialidade")));
+            consulta.setData(c.getString(c.getColumnIndex("data")));
+            consulta.setHorario(c.getString(c.getColumnIndex("horario")));
+            consulta.setSala(c.getString(c.getColumnIndex("sala")));
 
-            return consulta;
+            consultaList.add(consulta);
 
-        }else {
-            return null;
         }
+        db.close();
+        c.close();
+
+        return consultaList;
     }
+
 
 }

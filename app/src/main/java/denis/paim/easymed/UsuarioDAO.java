@@ -21,16 +21,44 @@ public class UsuarioDAO {
         SQLiteDatabase db = conn.getWritableDatabase();
 
         db.insert("usuarios", null, values);
+
+    }
+
+    public static Usuario buscaUsuario(Context context, String email) {
+
+        Banco conn = new Banco(context);
+        String sql_busca_pessoa = "SELECT * FROM usuarios WHERE email = " + "'" + email + "'";
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Cursor c = db.rawQuery(sql_busca_pessoa, null);
+
+        Usuario usuario = new Usuario();
+
+        while(c.moveToNext()){
+
+            usuario.setNome(c.getString(c.getColumnIndex("usuario_nome")));
+            usuario.setCpf(c.getString(c.getColumnIndex("usuarioCpf")));
+            usuario.setTelefone(c.getString(c.getColumnIndex("telefone")));
+            usuario.setEndereco(c.getString(c.getColumnIndex("endereco")));
+            usuario.setDataNascimento(c.getString(c.getColumnIndex("dataNascimento")));
+            usuario.setEmail(c.getString(c.getColumnIndex("email")));
+
+        }
+//        db.close();
+//        c.close();
+
+        return usuario;
+
     }
 
     public boolean autenticarUsuario(Context context, Usuario usuario){
         Banco conn = new Banco(context);
         SQLiteDatabase db = conn.getReadableDatabase();
 
-        String sql_busca_usuarios = "SELECT * from usuarios WHERE usuario_nome = " + "'" + usuario.getNome() + "'";
+        String sql_busca_usuarios = "SELECT * from usuarios WHERE email = " + "'" + usuario.getEmail() + "'";
         Cursor c = db.rawQuery(sql_busca_usuarios, null);
         while(c.moveToNext()){
-            if (usuario.getNome().equals(c.getString(c.getColumnIndex("usuario_nome")))){
+            if (usuario.getEmail().equals(c.getString(c.getColumnIndex("email")))){
                 if (usuario.getSenha().equals(c.getString(c.getColumnIndex("usuario_senha")))){
                     return true;
                 }

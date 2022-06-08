@@ -52,7 +52,7 @@ public class CriarContaActivity extends AppCompatActivity {
         String email = edEmail.getText().toString();
 
 
-        if (nome.isEmpty() || senha.isEmpty()){
+        if (nome.isEmpty() || senha.isEmpty() || email.isEmpty()){
             Toast.makeText(this, "Você deve preencher todos os campos!", Toast.LENGTH_LONG ).show();
         }else{
             usuario = new Usuario();

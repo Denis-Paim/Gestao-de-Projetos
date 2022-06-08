@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().hide();
-
 
         usuarioNome = findViewById(R.id.edNome);
         usuarioSenha =  findViewById(R.id.edSenha);
@@ -58,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void autenticaUsuario(String nome, String senha){
+    private void autenticaUsuario(String email, String senha){
         usuario = new Usuario();
-        usuario.setNome(nome);
+        usuario.setEmail(email);
         usuario.setSenha(senha);
 
         usuarioDAO = new UsuarioDAO();
@@ -69,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         if (resultado == true){
             Intent intent = new Intent(LoginActivity.this, ConsultasMarcadasActivity.class);
             intent.putExtra("acao", "nome");
-            intent.putExtra("nomeUsuario", usuario.nome);
+            intent.putExtra("nomeUsuario", usuario.email);
             startActivity(intent);
             finish();
         }else{
@@ -79,6 +77,5 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuário ou senha inválidos", Toast.LENGTH_LONG).show();
 
         }
-
     }
 }

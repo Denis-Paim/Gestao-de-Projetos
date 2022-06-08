@@ -37,13 +37,12 @@ public class MedicosAdapter extends RecyclerView.Adapter<MedicosAdapter.MedicosV
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull MedicosAdapter.MedicosViewHolder holder, int position) {
 
-        holder.nome.setText(medicoList.get(position).getNome());
-        holder.especialidade.setText(medicoList.get(position).getEspecialidade());
-        holder.sala.setText(medicoList.get(position).getSala());
+        holder.nome.setText("Médico: " + medicoList.get(position).getNome());
+        holder.especialidade.setText("Especialidade: " + medicoList.get(position).getEspecialidade());
+        holder.sala.setText("Sala: " + medicoList.get(position).getSala());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

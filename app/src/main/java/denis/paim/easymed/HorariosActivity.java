@@ -25,7 +25,6 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 public class HorariosActivity extends AppCompatActivity {
 
 
-    Spinner spHorarios;
     List<String> horarios;
     TextView nomeMedico;
     TextView especialidadeMedico;
@@ -45,7 +44,6 @@ public class HorariosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horarios);
-
 
         /* starts before 1 month from now */
         Calendar startDate = Calendar.getInstance();
@@ -71,7 +69,6 @@ public class HorariosActivity extends AppCompatActivity {
             @Override
             public void onDateSelected(Calendar date, int position) {
 
-
                 dataAtual = String.valueOf(date);
                 String[] dataArray = dataAtual.split(",");
                 String[] diaDaSemana = String.valueOf(dataArray[17]).split("=");
@@ -80,19 +77,15 @@ public class HorariosActivity extends AppCompatActivity {
                 diaDaSemanaFinal = diaDaSemana[1];
                 String anoString = ano[1];
                 int mesFinal = Integer.parseInt(mes[1]) + 1;
-                dataFinal = diaDaSemanaFinal + " / " + String.valueOf(mesFinal) + " / " + anoString;
+                dataFinal = diaDaSemanaFinal + "/" + String.valueOf(mesFinal) + "/" + anoString;
 
                 // on below line we are printing date
                 // in the logcat which is selected.
                 // Log.e("TAG", "CURRENT DATE IS " + date);
 
-                //Toast.makeText(getApplicationContext(), "Data: " + dataFinal, Toast.LENGTH_LONG).show();
-
-                //Toast.makeText(getApplicationContext(), "Data: " + Arrays.toString(new String[]{dataArray[17]}) + "Position: " + position + " ", Toast.LENGTH_LONG).show();
-
             }
         });
-//
+
         nomeMedico = findViewById(R.id.txtMedicoTelaHorario);
         especialidadeMedico = findViewById(R.id.txtExpecialidadeTelaHorario);
         salaConsulta = findViewById(R.id.txtSala);
@@ -101,10 +94,8 @@ public class HorariosActivity extends AppCompatActivity {
         nomeMedico.setText(extras.getString("nomeMedico"));
         especialidadeMedico.setText(extras.getString("especialidadeMedico"));
 
-//        spHorarios = findViewById(R.id.spHorarios);
 
         horarios = new ArrayList<>();
-//        horarios.add("Horários");
         horarios.add("8:00");
         horarios.add("8:30");
         horarios.add("9:00");
@@ -117,27 +108,9 @@ public class HorariosActivity extends AppCompatActivity {
         autoCompleteTxt = findViewById(R.id.auto_complete_txt2);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HorariosActivity.this, R.layout.list_item, horarios);
-        //arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         autoCompleteTxt.setAdapter(arrayAdapter);
-
-
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HorariosActivity.this, R.layout.item, horarios);
-//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spHorarios.setAdapter(arrayAdapter);
-
-//        spHorarios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                horario = spHorarios.getSelectedItem().toString();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
 
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -158,10 +131,7 @@ public class HorariosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext(), "Consulta agendada com sucesso.", Toast.LENGTH_SHORT).show();
-
-
-                Intent intent = new Intent(getApplicationContext(), ConsultasMarcadasActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmarConsultaActivity.class);
                 intent.putExtra("acao", "outros");
                 intent.putExtra("nomeMed", nomeMed);
                 intent.putExtra("especialidadeMed", especialidadeMed);
@@ -174,21 +144,6 @@ public class HorariosActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
-//    public void confirmarConsulta(){
-//
-//        Bundle extras = getIntent().getExtras();
-//
-//        consulta = new Consulta();
-//        consulta.setMedicoNome(extras.getString("nomeMedico"));
-//        consulta.setEspecialidade(extras.getString("especialidadeMedico"));
-//        ConsultaDAO.editar(this, consulta);
-//
-//
-//        Toast.makeText(this, "Consulta marcada com sucesso!", Toast.LENGTH_LONG ).show();
-//    }
-
 
 }

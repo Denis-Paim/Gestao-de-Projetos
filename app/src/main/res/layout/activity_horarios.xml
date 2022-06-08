@@ -7,12 +7,6 @@
     tools:context=".HorariosActivity">
 
 
-    <!--on below line we are creating our calendar view
-        selector color is use as a indicator for selected date
-        text color normal is use to give text color to unselected date
-        text color selected is use to give text color to selected date-->
-
-
     <TextView
         android:id="@+id/txtMedicoTelaHorario"
         android:layout_width="wrap_content"
@@ -20,9 +14,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Nome Médico"
-        android:textSize="20dp"
         android:textColor="@color/black"
-
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,31 +23,13 @@
         android:id="@+id/txtExpecialidadeTelaHorario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:text="Especialidade"
-        android:textSize="20dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    <FrameLayout-->
-    <!--        android:id="@+id/frameLayoutHorario"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/calendarView">-->
-
-    <!--        &lt;!&ndash;        <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
-    <!--        &lt;!&ndash;            android:id="@+id/recycler_view_horarios_list"&ndash;&gt;-->
-    <!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--        &lt;!&ndash;            tools:layout_editor_absoluteX="-2dp"&ndash;&gt;-->
-    <!--        &lt;!&ndash;            tools:layout_editor_absoluteY="133dp" />&ndash;&gt;-->
-
-    <!--    </FrameLayout>-->
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtMedicoTelaHorario" />
 
     <devs.mulham.horizontalcalendar.HorizontalCalendarView
         android:id="@+id/calendarView"
@@ -66,17 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:selectorColor="@color/black"
-        app:textColorNormal="#082BED"
-        app:textColorSelected="#082BED" />
-
-<!--    <Spinner-->
-<!--        android:id="@+id/spHorarios"-->
-<!--        android:layout_width="365dp"-->
-<!--        android:layout_height="32dp"-->
-<!--        android:layout_marginTop="320dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        app:textColorNormal="#172E4B"
+        app:textColorSelected="#2DB5E4" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -89,6 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
         app:layout_constraintVertical_bias="0.19">
+
         <AutoCompleteTextView
             android:id="@+id/auto_complete_txt2"
             android:layout_width="match_parent"
@@ -114,7 +81,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Especialidade:"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMedicoTelaHorario" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

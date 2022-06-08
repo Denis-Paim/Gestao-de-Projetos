@@ -5,34 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EspecialidadesActivity">
+    tools:context=".EspecialidadesActivity"
+    android:background="@drawable/gradiente_bg">
 
-<!--    <Spinner-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
-<!--        android:id="@+id/spEspecialidades"-->
-<!--        android:layout_width="384dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:spinnerMode="dropdown"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/select"
+        android:background="@color/white"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
         <AutoCompleteTextView
             android:id="@+id/auto_complete_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"/>
+            android:inputType="none" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout

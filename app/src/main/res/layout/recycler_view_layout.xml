@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="5dp"
     android:elevation="5dp"
     android:layout_marginTop="12dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_height="200dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_height="170dp"
     android:id="@+id/cardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,38 +21,36 @@
             android:id="@+id/txtNomeMedico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="32dp"
             android:text="Nome Médico"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtEspecialidadeMedico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="22dp"
             android:text="Especialidade"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtSala"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.447" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNomeMedico"
+            app:layout_constraintVertical_bias="0.04" />
 
         <TextView
             android:id="@+id/txtSala"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="49dp"
-            android:layout_marginBottom="51dp"
+            android:layout_marginBottom="32dp"
             android:text="Sala: Confirmar no Local"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtEspecialidadeMedico"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
